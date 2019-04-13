@@ -1,0 +1,6 @@
+[program:imooc]
+command=pyhton run.py
+directory=/home/crawler/imooc
+autostart=true
+autorestart=true
+environment=LANG="en_US.utf8", LC_ALL="en_US.UTF-8", LC_LANG="en_US.UTF-8"
