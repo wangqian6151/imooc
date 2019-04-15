@@ -33,8 +33,8 @@ class MongoPipeline(object):
 
     def process_item(self, item, spider):
         # self.db[item.collection].insert_one(dict(item))
-        print('save', dict(item))
-        self.logger.debug('save' + str(dict(item)))
+        print('mongodb save', dict(item))
+        self.logger.debug('mongodb save' + str(dict(item)))
         print('self.db[item.collection]: ', self.db[item.collection])
         self.logger.debug('self.db[item.collection]: ' + str(self.db[item.collection]))
         print('mongodb status', self.db[item.collection].find({"id": item['id']}).count())
@@ -77,6 +77,8 @@ class MysqlPipeline(object):
         # print(item['name'])
         # self.logger.debug(item['name'])
         data = dict(item)
+        print('mysql save', dict(item))
+        self.logger.debug('mysql save' + str(dict(item)))
         keys = ', '.join(data.keys())
         values = ', '.join(['%s'] * len(data))
         sql = 'INSERT INTO {table}({keys}) VALUES ({values}) ON DUPLICATE KEY UPDATE'.format(table=item.table,
